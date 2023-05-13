@@ -1,0 +1,10 @@
+body {
+    text-align: right;
+    direction: rtl;
+}
+
+.btn-primary {
+    color: #fff;
+    background-color: #0b488a;
+    border-color: #0085A1;
+  }

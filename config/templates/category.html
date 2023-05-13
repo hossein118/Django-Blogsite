@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block imagee %} style="background-image: url({% static 'assets/img/film.jpg' %})">{% endblock imagee %}
+{% block content %}
+        <!-- Main Content-->
+        <div class="container px-4 px-lg-5">
+            
+            <div class="row gx-4 gx-lg-5 justify-content-center">
+                <h3 class="alert alert-primary text-center">دسته بندی: {{category.title}}</h3>
+                <div class="col-md-10 col-lg-8 col-xl-7">
+                    <!-- Post preview-->
+                {% for blog in blogs %}
+                    <div class="post-preview">
+                        <a href="{% url 'blog:detail' blog.id %}">
+                            <h2 class="post-title">{{blog.title}}</h2>
+                            <h3 class="post-subtitle">{{blog.body | truncatewords:13}}</h3>
+                        </a>
+                        <p class="post-meta">
+                            Posted by
+                            <a href="#!">hossein</a>
+                            on September 24, 2023
+                        </p>
+                        {% for category in blog.category.all   %}
+                        <a href="{% url 'blog:category' category.slug %}">#{{category.title}}</a>
+                        {% endfor %}
+                    </div>
+                    <!-- Divider-->
+                    <hr class="my-4" />
+                    {% endfor %}
+                    <!-- Pager-->
+                    <div class="d-flex justify-content-end mb-4"><a class="btn btn-primary text-uppercase" href="#!">Older Posts →</a></div>
+                </div>
+            </div>
+        </div>
+
+{% endblock content %}
